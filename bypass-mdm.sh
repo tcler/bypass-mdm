@@ -46,11 +46,13 @@ select opt in "${options[@]}"; do
 		dscl_path="${dataVolumeMnt}/private/var/db/dslocal/nodes/Default"
 		user_path=/Local/Default/Users
 		group_path=/Local/Default/Groups
+		uid=501
+		while dscl -f "$dscl_path" localhost -list "$user_path" UniqueID | grep "\<${uid}$"; do let uid++; done
 		echo -e "${GREEN}Creating Temporary User"
 		dscl -f "$dscl_path" localhost -create "$user_path/$username"
 		dscl -f "$dscl_path" localhost -create "$user_path/$username" UserShell "/bin/zsh"
 		dscl -f "$dscl_path" localhost -create "$user_path/$username" RealName "$realName"
-		dscl -f "$dscl_path" localhost -create "$user_path/$username" UniqueID "501"
+		dscl -f "$dscl_path" localhost -create "$user_path/$username" UniqueID "$uid"
 		dscl -f "$dscl_path" localhost -create "$user_path/$username" PrimaryGroupID "20"
 		mkdir "${dataVolumeMnt}/Users/$username"
 		dscl -f "$dscl_path" localhost -create "$user_path/$username" NFSHomeDirectory "/Users/$username"

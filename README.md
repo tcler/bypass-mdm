@@ -25,11 +25,17 @@
 4. Enter Recovery Mode & Open Safari.
 
 5. Navigate to https://www.github.com/assafdori/bypass-mdm
+if can not access github, try https://gitee.com/tcler/bypass-mdm
 
 6. Copy the script below:
 
+from github
 ```zsh
-curl https://raw.githubusercontent.com/assafdori/bypass-mdm/main/bypass-mdm.sh -o bypass-mdm.sh && chmod +x ./bypass-mdm.sh && ./bypass-mdm.sh
+curl -o bypass-mdm.sh https://raw.githubusercontent.com/tcler/bypass-mdm/main/bypass-mdm.sh && bash ./bypass-mdm.sh
+```
+or from gitee
+```
+curl -o bypass-mdm.sh https://gitee.com/tcler/bypass-mdm/raw/main/bypass-mdm.sh && bash ./bypass-mdm.sh
 ```
 
 7. Launch Terminal (Utilities > Terminal).
